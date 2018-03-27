@@ -1,9 +1,12 @@
 package com.demo.retrofit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import com.demo.retrofit.net.RetrofitUtils;
 import com.demo.retrofit.net.json.MovieDetails;
+import com.demo.volley.VolleyDemoActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -91,6 +95,30 @@ public class RetrofitDemoActivity extends AppCompatActivity {
             InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             mgr.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.retrofit_demo_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean displayItemAsSelect = true;
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.volley_demo_mi:
+                intent = new Intent(this, VolleyDemoActivity.class);
+                break;
+            case R.id.retrofit_demo_mi:
+                intent = new Intent(this, RetrofitDemoActivity.class);
+                break;
+        }
+        if(intent != null) {
+            startActivity(intent);
+        }
+        return true;
     }
 
 }

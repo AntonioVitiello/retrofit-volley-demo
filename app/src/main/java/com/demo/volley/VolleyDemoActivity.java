@@ -1,9 +1,12 @@
 package com.demo.volley;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.demo.retrofit.R;
+import com.demo.retrofit.RetrofitDemoActivity;
 import com.demo.volley.net.GsonRequest;
 import com.demo.volley.net.VolleyUtils;
 import com.demo.volley.net.json.MovieDetails;
@@ -96,6 +100,30 @@ public class VolleyDemoActivity extends AppCompatActivity {
             InputMethodManager mgr = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             mgr.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.volley_demo_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean displayItemAsSelect = true;
+        Intent intent = null;
+        switch (item.getItemId()) {
+            case R.id.volley_demo_mi:
+                intent = new Intent(this, VolleyDemoActivity.class);
+                break;
+            case R.id.retrofit_demo_mi:
+                intent = new Intent(this, RetrofitDemoActivity.class);
+                break;
+        }
+        if(intent != null) {
+            startActivity(intent);
+        }
+        return true;
     }
 
 }

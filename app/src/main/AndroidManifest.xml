@@ -13,15 +13,15 @@
 
         <activity android:name=".RetrofitDemoActivity"
             android:label="Retrofit Demo">
-        </activity>
-
-        <activity android:name="com.demo.volley.VolleyDemoActivity"
-            android:label="Volley Demo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name="com.demo.volley.VolleyDemoActivity"
+            android:label="Volley Demo">
         </activity>
 
     </application>
